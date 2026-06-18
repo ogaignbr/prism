@@ -241,6 +241,13 @@ input {
   object-fit: contain;
 }
 
+/* ヘッダーの横型ワードマーク（透過PNG）。暗い背景で見えるよう白く表示 */
+.brand-logo--wordmark {
+  height: clamp(40px, 5.2vw, 54px);
+  border-radius: 0;
+  filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(255, 47, 154, 0.25));
+}
+
 .header-right {
   display: flex;
   align-items: center;

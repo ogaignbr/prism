@@ -412,7 +412,7 @@
             b.style.display = "none";
           });
           document.querySelectorAll(".snipcart-add-item").forEach(function (btn) {
-            btn.classList.remove("snipcart-add-item");
+            // クラスは残す（モーダルの属性コピーに必要）。購入は問い合わせへ誘導。
             btn.addEventListener("click", function () {
               location.hash = "#contact";
             });
@@ -442,26 +442,41 @@
 
         var ITEM_ATTRS = ["id", "price", "url", "name", "image", "description"];
 
-        document.querySelectorAll(".detail-button").forEach(function (btn) {
-          btn.addEventListener("click", function () {
-            var card = this.closest(".product-card");
-            var img = card.querySelector("img");
-            var cardBuy = card.querySelector(".snipcart-add-item");
-            modalImg.src = img.src;
-            modalImg.alt = img.alt;
-            modalCategory.textContent = card.dataset.category;
-            modalTitle.textContent = card.querySelector("h3").textContent;
-            modalDesc.textContent = card.dataset.desc;
-            modalPrice.textContent = card.dataset.price;
+        function openProductModal(card) {
+          var img = card.querySelector("img");
+          var cardBuy = card.querySelector(".snipcart-add-item");
+          modalImg.src = img.src;
+          modalImg.alt = img.alt;
+          modalCategory.textContent = card.dataset.category;
+          modalTitle.textContent = card.querySelector("h3").textContent;
+          modalDesc.textContent = card.dataset.desc;
+          modalPrice.textContent = card.dataset.price;
 
-            // モーダルの「カートに入れる」に、その商品のSnipcart属性をコピー
+          // モーダルの「カートに入れる」に、その商品のSnipcart属性をコピー
+          if (cardBuy) {
             ITEM_ATTRS.forEach(function (k) {
               var v = cardBuy.getAttribute("data-item-" + k);
               if (v !== null) modalBuy.setAttribute("data-item-" + k, v);
             });
+          }
 
-            modal.classList.add("active");
-          });
+          modal.classList.add("active");
+        }
+
+        // 「詳細を見る」ボタンと商品画像クリックの両方でモーダルを開く
+        document.querySelectorAll(".product-card").forEach(function (card) {
+          var detail = card.querySelector(".detail-button");
+          if (detail) {
+            detail.addEventListener("click", function () {
+              openProductModal(card);
+            });
+          }
+          var cardImg = card.querySelector("img");
+          if (cardImg) {
+            cardImg.addEventListener("click", function () {
+              openProductModal(card);
+            });
+          }
         });
 
         // カートに入れたらモーダルは閉じる（Snipcartのカートが前面に開く）

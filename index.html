@@ -9,6 +9,11 @@
       content="美容サロン発のオリジナルヘアケアブランドPRISMのECサイト。"
     />
     <link rel="stylesheet" href="styles.css" />
+
+    <!-- Snipcart（カート／決済）スタイル。読み込みのみで、決済の有効化はダッシュボード設定が必要 -->
+    <link rel="preconnect" href="https://app.snipcart.com" />
+    <link rel="preconnect" href="https://cdn.snipcart.com" />
+    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.css" />
   </head>
   <body>
     <div class="ambient ambient-one"></div>
@@ -33,10 +38,16 @@
           class="brand-logo"
         />
       </a>
-      <nav class="desktop-nav" aria-label="メインナビゲーション">
-        <a href="#products">商品一覧</a>
-        <a href="#contact">お問合せ</a>
-      </nav>
+      <div class="header-right">
+        <nav class="desktop-nav" aria-label="メインナビゲーション">
+          <a href="#products">商品一覧</a>
+          <a href="#contact">お問合せ</a>
+        </nav>
+        <button class="snipcart-checkout cart-button" type="button" aria-label="カートを開く">
+          <span class="cart-icon" aria-hidden="true">🛒</span>
+          <span class="snipcart-items-count cart-count"></span>
+        </button>
+      </div>
     </header>
 
     <main id="top">
@@ -69,6 +80,11 @@
           <h2>髪も心も、ときめく魔法。</h2>
         </div>
 
+        <!--
+          各「購入する」ボタンは Snipcart の add-to-cart ボタン（class="snipcart-add-item"）。
+          data-item-price は税込・JPYの整数。data-item-url は Snipcart が価格検証で
+          クロールする公開URL（本番ドメインを変更したらここも更新すること）。
+        -->
         <details class="product-group">
           <summary>SHAMPOO</summary>
           <div class="product-grid">
@@ -77,23 +93,41 @@
               <h3>プリズム シャンプー ブルー</h3>
               <div class="card-actions">
                 <button class="detail-button" type="button">詳細を見る</button>
-                <a class="buy-button" href="#contact">購入する</a>
+                <button class="buy-button snipcart-add-item" type="button"
+                  data-item-id="prism-shampoo-blue"
+                  data-item-price="4860"
+                  data-item-url="https://ogaignbr.github.io/prism/"
+                  data-item-name="プリズム シャンプー ブルー（450mL）"
+                  data-item-image="LINE_ALBUM_𝕡𝕣𝕚𝕤𝕞 𝕨𝕠𝕣𝕝𝕕_260610_1.jpg"
+                  data-item-description="濃密な泡で洗い上げ、うるおいを守りながらすっきり整える。">購入する</button>
               </div>
             </article>
             <article class="product-card" data-category="SHAMPOO" data-desc="カラー後の髪をやさしく包み、まとまりのある指通りへ。" data-price="450mL / ¥4,980">
-              <img src="LINE_ALBUM_𝕡𝕣𝕚𝕤𝕞 𝕨𝕠𝕣𝕝𝕕_260610_2.jpg" alt="PRISM シャンプー ピンク" />
+              <img src="LINE_ALBUM_𝕡𝕣𝕚𝕤𝕞 𝕨𝕠𝕣𝕝𝕕_260610_2.jpg" alt="PRISM シャンプー ローズ" />
               <h3>プリズム シャンプー ローズ</h3>
               <div class="card-actions">
                 <button class="detail-button" type="button">詳細を見る</button>
-                <a class="buy-button" href="#contact">購入する</a>
+                <button class="buy-button snipcart-add-item" type="button"
+                  data-item-id="prism-shampoo-rose"
+                  data-item-price="4980"
+                  data-item-url="https://ogaignbr.github.io/prism/"
+                  data-item-name="プリズム シャンプー ローズ（450mL）"
+                  data-item-image="LINE_ALBUM_𝕡𝕣𝕚𝕤𝕞 𝕨𝕠𝕣𝕝𝕕_260610_2.jpg"
+                  data-item-description="カラー後の髪をやさしく包み、まとまりのある指通りへ。">購入する</button>
               </div>
             </article>
             <article class="product-card" data-category="SHAMPOO" data-desc="乾燥しがちな髪にツヤを足し、軽やかにまとまる洗い心地。" data-price="450mL / ¥4,620">
-              <img src="LINE_ALBUM_𝕡𝕣𝕚𝕤𝕞 𝕨𝕠𝕣𝕝𝕕_260610_3.jpg" alt="PRISM シャンプー ライト" />
+              <img src="LINE_ALBUM_𝕡𝕣𝕚𝕤𝕞 𝕨𝕠𝕣𝕝𝕕_260610_3.jpg" alt="PRISM シャンプー ミルキー" />
               <h3>プリズム シャンプー ミルキー</h3>
               <div class="card-actions">
                 <button class="detail-button" type="button">詳細を見る</button>
-                <a class="buy-button" href="#contact">購入する</a>
+                <button class="buy-button snipcart-add-item" type="button"
+                  data-item-id="prism-shampoo-milky"
+                  data-item-price="4620"
+                  data-item-url="https://ogaignbr.github.io/prism/"
+                  data-item-name="プリズム シャンプー ミルキー（450mL）"
+                  data-item-image="LINE_ALBUM_𝕡𝕣𝕚𝕤𝕞 𝕨𝕠𝕣𝕝𝕕_260610_3.jpg"
+                  data-item-description="乾燥しがちな髪にツヤを足し、軽やかにまとまる洗い心地。">購入する</button>
               </div>
             </article>
             <article class="product-card" data-category="SHAMPOO" data-desc="サロン帰りのようななめらかさを、毎日のバスタイムに。" data-price="450mL / ¥5,200">
@@ -101,7 +135,13 @@
               <h3>プリズム シャンプー パール</h3>
               <div class="card-actions">
                 <button class="detail-button" type="button">詳細を見る</button>
-                <a class="buy-button" href="#contact">購入する</a>
+                <button class="buy-button snipcart-add-item" type="button"
+                  data-item-id="prism-shampoo-pearl"
+                  data-item-price="5200"
+                  data-item-url="https://ogaignbr.github.io/prism/"
+                  data-item-name="プリズム シャンプー パール（450mL）"
+                  data-item-image="LINE_ALBUM_𝕡𝕣𝕚𝕤𝕞 𝕨𝕠𝕣𝕝𝕕_260610_4.jpg"
+                  data-item-description="サロン帰りのようななめらかさを、毎日のバスタイムに。">購入する</button>
               </div>
             </article>
           </div>
@@ -115,7 +155,13 @@
               <h3>プリズム トリートメント フローラル</h3>
               <div class="card-actions">
                 <button class="detail-button" type="button">詳細を見る</button>
-                <a class="buy-button" href="#contact">購入する</a>
+                <button class="buy-button snipcart-add-item" type="button"
+                  data-item-id="prism-treatment-floral"
+                  data-item-price="5680"
+                  data-item-url="https://ogaignbr.github.io/prism/"
+                  data-item-name="プリズム トリートメント フローラル（450g）"
+                  data-item-image="LINE_ALBUM_𝕡𝕣𝕚𝕤𝕞 𝕨𝕠𝕣𝕝𝕕_260610_5.jpg"
+                  data-item-description="補修成分が髪の芯まで浸透し、しっとりまとまる質感へ。">購入する</button>
               </div>
             </article>
             <article class="product-card" data-category="TREATMENT" data-desc="カラーの美しさを守りながら、毛先までやわらかく整える。" data-price="450g / ¥5,940">
@@ -123,7 +169,13 @@
               <h3>プリズム トリートメント ルミナス</h3>
               <div class="card-actions">
                 <button class="detail-button" type="button">詳細を見る</button>
-                <a class="buy-button" href="#contact">購入する</a>
+                <button class="buy-button snipcart-add-item" type="button"
+                  data-item-id="prism-treatment-luminous"
+                  data-item-price="5940"
+                  data-item-url="https://ogaignbr.github.io/prism/"
+                  data-item-name="プリズム トリートメント ルミナス（450g）"
+                  data-item-image="LINE_ALBUM_𝕡𝕣𝕚𝕤𝕞 𝕨𝕠𝕣𝕝𝕕_260610_6.jpg"
+                  data-item-description="カラーの美しさを守りながら、毛先までやわらかく整える。">購入する</button>
               </div>
             </article>
             <article class="product-card" data-category="TREATMENT" data-desc="ブリーチ毛やハイトーンに、やわらかなまとまりと輝きを。" data-price="450g / ¥5,860">
@@ -131,7 +183,13 @@
               <h3>プリズム トリートメント パープル</h3>
               <div class="card-actions">
                 <button class="detail-button" type="button">詳細を見る</button>
-                <a class="buy-button" href="#contact">購入する</a>
+                <button class="buy-button snipcart-add-item" type="button"
+                  data-item-id="prism-treatment-purple"
+                  data-item-price="5860"
+                  data-item-url="https://ogaignbr.github.io/prism/"
+                  data-item-name="プリズム トリートメント パープル（450g）"
+                  data-item-image="LINE_ALBUM_𝕡𝕣𝕚𝕤𝕞 𝕨𝕠𝕣𝕝𝕕_260610_9.jpg"
+                  data-item-description="ブリーチ毛やハイトーンに、やわらかなまとまりと輝きを。">購入する</button>
               </div>
             </article>
           </div>
@@ -145,7 +203,13 @@
               <h3>プリズム ヘアミスト</h3>
               <div class="card-actions">
                 <button class="detail-button" type="button">詳細を見る</button>
-                <a class="buy-button" href="#contact">購入する</a>
+                <button class="buy-button snipcart-add-item" type="button"
+                  data-item-id="prism-hair-mist"
+                  data-item-price="3300"
+                  data-item-url="https://ogaignbr.github.io/prism/"
+                  data-item-name="プリズム ヘアミスト（150mL）"
+                  data-item-image="LINE_ALBUM_𝕡𝕣𝕚𝕤𝕞 𝕨𝕠𝕣𝕝𝕕_260610_7.jpg"
+                  data-item-description="うるおいをチャージし、朝も夜も軽やかな香りをまとう。">購入する</button>
               </div>
             </article>
             <article class="product-card" data-category="HAIR OIL" data-desc="ツヤをプラスし、ダメージから髪を守る軽やかなオイル。" data-price="100mL / ¥3,980">
@@ -153,7 +217,13 @@
               <h3>プリズム ヘアオイル</h3>
               <div class="card-actions">
                 <button class="detail-button" type="button">詳細を見る</button>
-                <a class="buy-button" href="#contact">購入する</a>
+                <button class="buy-button snipcart-add-item" type="button"
+                  data-item-id="prism-hair-oil"
+                  data-item-price="3980"
+                  data-item-url="https://ogaignbr.github.io/prism/"
+                  data-item-name="プリズム ヘアオイル（100mL）"
+                  data-item-image="LINE_ALBUM_𝕡𝕣𝕚𝕤𝕞 𝕨𝕠𝕣𝕝𝕕_260610_8.jpg"
+                  data-item-description="ツヤをプラスし、ダメージから髪を守る軽やかなオイル。">購入する</button>
               </div>
             </article>
             <article class="product-card" data-category="SCALP MIST" data-desc="頭皮をすっきり整え、香りと清涼感で気分までリセット。" data-price="150mL / ¥3,520">
@@ -161,7 +231,13 @@
               <h3>プリズム スカルプミスト</h3>
               <div class="card-actions">
                 <button class="detail-button" type="button">詳細を見る</button>
-                <a class="buy-button" href="#contact">購入する</a>
+                <button class="buy-button snipcart-add-item" type="button"
+                  data-item-id="prism-scalp-mist"
+                  data-item-price="3520"
+                  data-item-url="https://ogaignbr.github.io/prism/"
+                  data-item-name="プリズム スカルプミスト（150mL）"
+                  data-item-image="LINE_ALBUM_𝕡𝕣𝕚𝕤𝕞 𝕨𝕠𝕣𝕝𝕕_260610_13.jpg"
+                  data-item-description="頭皮をすっきり整え、香りと清涼感で気分までリセット。">購入する</button>
               </div>
             </article>
             <article class="product-card" data-category="GLOSS SPRAY" data-desc="仕上げにひと吹き。光を受けてきらめくツヤ髪へ。" data-price="120mL / ¥3,740">
@@ -169,7 +245,13 @@
               <h3>プリズム グロススプレー</h3>
               <div class="card-actions">
                 <button class="detail-button" type="button">詳細を見る</button>
-                <a class="buy-button" href="#contact">購入する</a>
+                <button class="buy-button snipcart-add-item" type="button"
+                  data-item-id="prism-gloss-spray"
+                  data-item-price="3740"
+                  data-item-url="https://ogaignbr.github.io/prism/"
+                  data-item-name="プリズム グロススプレー（120mL）"
+                  data-item-image="LINE_ALBUM_𝕡𝕣𝕚𝕤𝕞 𝕨𝕠𝕣𝕝𝕕_260610_15.jpg"
+                  data-item-description="仕上げにひと吹き。光を受けてきらめくツヤ髪へ。">購入する</button>
               </div>
             </article>
           </div>
@@ -183,7 +265,13 @@
               <h3>プリズム ヘアマスク</h3>
               <div class="card-actions">
                 <button class="detail-button" type="button">詳細を見る</button>
-                <a class="buy-button" href="#contact">購入する</a>
+                <button class="buy-button snipcart-add-item" type="button"
+                  data-item-id="prism-hair-mask"
+                  data-item-price="6200"
+                  data-item-url="https://ogaignbr.github.io/prism/"
+                  data-item-name="プリズム ヘアマスク（240g）"
+                  data-item-image="LINE_ALBUM_𝕡𝕣𝕚𝕤𝕞 𝕨𝕠𝕣𝕝𝕕_260610_10.jpg"
+                  data-item-description="週末の集中補修に。サロン品質のうるおいをぎゅっと閉じ込める。">購入する</button>
               </div>
             </article>
             <article class="product-card" data-category="HAIR BALM" data-desc="束感とツヤをキープしながら、毛先にニュアンスをつくる。" data-price="80g / ¥3,600">
@@ -191,7 +279,13 @@
               <h3>プリズム ヘアバーム</h3>
               <div class="card-actions">
                 <button class="detail-button" type="button">詳細を見る</button>
-                <a class="buy-button" href="#contact">購入する</a>
+                <button class="buy-button snipcart-add-item" type="button"
+                  data-item-id="prism-hair-balm"
+                  data-item-price="3600"
+                  data-item-url="https://ogaignbr.github.io/prism/"
+                  data-item-name="プリズム ヘアバーム（80g）"
+                  data-item-image="LINE_ALBUM_𝕡𝕣𝕚𝕤𝕞 𝕨𝕠𝕣𝕝𝕕_260610_11.jpg"
+                  data-item-description="束感とツヤをキープしながら、毛先にニュアンスをつくる。">購入する</button>
               </div>
             </article>
             <article class="product-card" data-category="NIGHT MILK" data-desc="眠る前の髪にうるおいを与え、翌朝のまとまりをサポート。" data-price="120mL / ¥4,400">
@@ -199,7 +293,13 @@
               <h3>プリズム ナイトミルク</h3>
               <div class="card-actions">
                 <button class="detail-button" type="button">詳細を見る</button>
-                <a class="buy-button" href="#contact">購入する</a>
+                <button class="buy-button snipcart-add-item" type="button"
+                  data-item-id="prism-night-milk"
+                  data-item-price="4400"
+                  data-item-url="https://ogaignbr.github.io/prism/"
+                  data-item-name="プリズム ナイトミルク（120mL）"
+                  data-item-image="LINE_ALBUM_𝕡𝕣𝕚𝕤𝕞 𝕨𝕠𝕣𝕝𝕕_260610_12.jpg"
+                  data-item-description="眠る前の髪にうるおいを与え、翌朝のまとまりをサポート。">購入する</button>
               </div>
             </article>
             <article class="product-card" data-category="COLOR CARE" data-desc="色落ちが気になる髪に、透明感とツヤを重ねる集中ケア。" data-price="100mL / ¥4,180">
@@ -207,7 +307,13 @@
               <h3>プリズム カラーケアセラム</h3>
               <div class="card-actions">
                 <button class="detail-button" type="button">詳細を見る</button>
-                <a class="buy-button" href="#contact">購入する</a>
+                <button class="buy-button snipcart-add-item" type="button"
+                  data-item-id="prism-color-care"
+                  data-item-price="4180"
+                  data-item-url="https://ogaignbr.github.io/prism/"
+                  data-item-name="プリズム カラーケアセラム（100mL）"
+                  data-item-image="LINE_ALBUM_𝕡𝕣𝕚𝕤𝕞 𝕨𝕠𝕣𝕝𝕕_260610_14.jpg"
+                  data-item-description="色落ちが気になる髪に、透明感とツヤを重ねる集中ケア。">購入する</button>
               </div>
             </article>
             <article class="product-card" data-category="REPAIR CREAM" data-desc="広がりをおさえ、しっとりとした毛先へ導くデイリーケア。" data-price="180g / ¥4,950">
@@ -215,7 +321,13 @@
               <h3>プリズム リペアクリーム</h3>
               <div class="card-actions">
                 <button class="detail-button" type="button">詳細を見る</button>
-                <a class="buy-button" href="#contact">購入する</a>
+                <button class="buy-button snipcart-add-item" type="button"
+                  data-item-id="prism-repair-cream"
+                  data-item-price="4950"
+                  data-item-url="https://ogaignbr.github.io/prism/"
+                  data-item-name="プリズム リペアクリーム（180g）"
+                  data-item-image="LINE_ALBUM_𝕡𝕣𝕚𝕤𝕞 𝕨𝕠𝕣𝕝𝕕_260610_16.jpg"
+                  data-item-description="広がりをおさえ、しっとりとした毛先へ導くデイリーケア。">購入する</button>
               </div>
             </article>
           </div>
@@ -249,6 +361,9 @@
       <div class="footer-links">
         <a href="#products">商品一覧</a>
         <a href="#contact">お問合せ</a>
+        <a href="legal.html#tokushoho">特定商取引法に基づく表記</a>
+        <a href="legal.html#privacy">プライバシーポリシー</a>
+        <a href="legal.html#returns">返品・キャンセル</a>
       </div>
       <p>&copy; PRISM All Rights Reserved.</p>
     </footer>
@@ -265,9 +380,46 @@
         <h3 id="modalTitle"></h3>
         <p class="modal-desc" id="modalDesc"></p>
         <strong id="modalPrice"></strong>
-        <a class="primary-button modal-buy" href="#contact">購入する</a>
+        <button class="primary-button modal-buy snipcart-add-item" type="button">カートに入れる</button>
       </div>
     </div>
+
+    <!--
+      Snipcart 設定。data-api-key を依頼主の「公開APIキー」に差し替えると有効化される。
+      まずはテスト用キーで動作確認 → 本番キーへ。data-currency は日本円(jpy)。
+    -->
+    <div
+      hidden
+      id="snipcart"
+      data-api-key="YOUR_SNIPCART_PUBLIC_API_KEY"
+      data-currency="jpy"
+    ></div>
+    <script>
+      // APIキーが本物のときだけ Snipcart を読み込む。
+      // 未設定（プレースホルダ）の間はカートを隠し、購入ボタンは問い合わせへ誘導して
+      // 既存サイトの見た目・挙動を壊さない。
+      (function () {
+        var cfg = document.getElementById("snipcart");
+        var key = cfg.getAttribute("data-api-key") || "";
+        var ready = key && key.indexOf("YOUR_") !== 0;
+        if (ready) {
+          var s = document.createElement("script");
+          s.async = true;
+          s.src = "https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.js";
+          document.body.appendChild(s);
+        } else {
+          document.querySelectorAll(".cart-button").forEach(function (b) {
+            b.style.display = "none";
+          });
+          document.querySelectorAll(".snipcart-add-item").forEach(function (btn) {
+            btn.classList.remove("snipcart-add-item");
+            btn.addEventListener("click", function () {
+              location.hash = "#contact";
+            });
+          });
+        }
+      })();
+    </script>
 
     <script>
       (function () {
@@ -277,6 +429,7 @@
         var modalTitle = document.getElementById("modalTitle");
         var modalDesc = document.getElementById("modalDesc");
         var modalPrice = document.getElementById("modalPrice");
+        var modalBuy = modal.querySelector(".modal-buy");
 
         var heroImg = document.querySelector(".hero-illustration");
         var heroLightbox = document.getElementById("heroLightbox");
@@ -287,18 +440,33 @@
           heroLightbox.classList.remove("active");
         });
 
+        var ITEM_ATTRS = ["id", "price", "url", "name", "image", "description"];
+
         document.querySelectorAll(".detail-button").forEach(function (btn) {
           btn.addEventListener("click", function () {
             var card = this.closest(".product-card");
             var img = card.querySelector("img");
+            var cardBuy = card.querySelector(".snipcart-add-item");
             modalImg.src = img.src;
             modalImg.alt = img.alt;
             modalCategory.textContent = card.dataset.category;
             modalTitle.textContent = card.querySelector("h3").textContent;
             modalDesc.textContent = card.dataset.desc;
             modalPrice.textContent = card.dataset.price;
+
+            // モーダルの「カートに入れる」に、その商品のSnipcart属性をコピー
+            ITEM_ATTRS.forEach(function (k) {
+              var v = cardBuy.getAttribute("data-item-" + k);
+              if (v !== null) modalBuy.setAttribute("data-item-" + k, v);
+            });
+
             modal.classList.add("active");
           });
+        });
+
+        // カートに入れたらモーダルは閉じる（Snipcartのカートが前面に開く）
+        modalBuy.addEventListener("click", function () {
+          modal.classList.remove("active");
         });
 
         modal.querySelector(".modal-close").addEventListener("click", function () {
